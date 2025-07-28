@@ -1,0 +1,80 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
+@font-face {
+  font-family: "Overused Grotesk";
+  src: url("https://raw.githubusercontent.com/RandomMaerks/Overused-Grotesk/master/fonts/variable/OverusedGroteskRoman-VF.ttf");
+  font-weight: 300 900;
+}
+
+:root {
+  color-scheme: light dark;
+}
+
+/* Use a more-intuitive box-sizing model */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+html, body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+
+  margin: 0px auto 0px;
+  padding: 0px 10px;
+  max-width: 650px;
+
+  line-height: 1.6;
+  font-size: 18px;
+  font-weight: 300;
+
+  color: light-dark(#3a3a3a, #e5e5e5);
+  background-color: light-dark(#fff, #1a1a1a);
+
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Inter", sans-serif;
+  line-height: 1.2;
+}
+
+h1, h2 {
+  font-size: 18px;
+  font-weight: 400;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 300;
+  color: light-dark(#6f6f6f, #a0a0a0);
+}
+
+p {
+  font-family: "Overused Grotesk", sans-serif;
+}
+
+main{
+  flex: 1 0 auto;
+  padding: 128px 0;
+}
+
+footer{
+  flex-shrink: 0;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  margin: 10px 0px;
+
+  font-family: "Overused-Grotesk", sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  
+  color: #707070;
+}
