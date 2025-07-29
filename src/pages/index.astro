@@ -1,9 +1,9 @@
 ---
-import Column from '@components/Column.astro';
-import Footer from '@components/Footer.astro';
-import GridAutoFill from '@components/GridAutoFill.astro';
-import Project from '@components/Project.astro';
 import Prose from '@components/Prose.astro';
+import GridAutoFill from '@components/GridAutoFill.astro';
+import GridColumn from '@components/GridColumn.astro';
+import GridItem from '@components/GridItem.astro';
+import Footer from '@components/Footer.astro';
 
 import '@styles/global.css';
 
@@ -27,40 +27,40 @@ const pageTitle = 'Samuel Duval';
 
       <section>
         <GridAutoFill>
-          <Column title="Projects">
-            <Project
+          <GridColumn title="Projects">
+            <GridItem
               title="Astro Portfolio"
               description="Lorem ipsum, dolor sit amet consectetur adipisicing elit."
               url="https://www.example.com/"
               external
             />
-            <Project
+            <GridItem
               title="Astro Blog"
               description="Lorem ipsum, dolor sit amet consectetur adipisicing elit."
               url="/projects/astro-blog"
             />
-            <Project
+            <GridItem
               title="Astro Website"
               description="Lorem ipsum, dolor sit amet consectetur adipisicing elit."
               url="/projects/astro-website"
             />
-          </Column>
+          </GridColumn>
 
-          <Column title="Writing">
-            <Project
+          <GridColumn title="Writing">
+            <GridItem
               title="Building a blog with Astro"
               description="Lorem ipsum, dolor sit amet consectetur adipisicing elit."
               url="/writings/building-a-blog-with-astro"
             />
 
-            <Project
+            <GridItem
               title="All writing"
               description="Infrequent thoughts on code."
               url="/writings"
             />
-          </Column>
+          </GridColumn>
 
-          <Column title="Building" />
+          <GridColumn title="Building" />
         </GridAutoFill>
       </section>
 
