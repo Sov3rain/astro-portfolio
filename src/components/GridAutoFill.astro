@@ -1,3 +1,13 @@
 <div class="grid-auto-fill">
   <slot />
 </div>
+
+<style>
+  .grid-auto-fill {
+    --min-col-size: 180px;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(var(--min-col-size), 100%), 1fr));
+    gap: 2rem;
+  }
+</style>

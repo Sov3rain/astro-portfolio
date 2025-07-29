@@ -1,5 +1,6 @@
 ---
 import Column from '@components/Column.astro';
+import Footer from '@components/Footer.astro';
 import GridAutoFill from '@components/GridAutoFill.astro';
 import Project from '@components/Project.astro';
 import '@styles/global.css';
@@ -24,11 +25,12 @@ const pageTitle = 'Samuel Duval';
       </div>
 
       <GridAutoFill>
-        <Column title="Projects" url="/">
+        <Column title="Projects">
           <Project
             title="Astro Portfolio"
             description="Lorem ipsum, dolor sit amet consectetur adipisicing elit."
             url="/projects/astro-portfolio"
+            external
           />
           <Project
             title="Astro Blog"
@@ -42,11 +44,17 @@ const pageTitle = 'Samuel Duval';
           />
         </Column>
 
-        <Column title="Writings" url="/">
+        <Column title="Writings">
           <Project
             title="Building a blog with Astro"
             description="Lorem ipsum, dolor sit amet consectetur adipisicing elit."
             url="/writings/building-a-blog-with-astro"
+          />
+
+          <Project
+            title="All writing"
+            description="Infrequent thoughts on code."
+            url="/writings"
           />
         </Column>
 
@@ -62,9 +70,6 @@ const pageTitle = 'Samuel Duval';
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
     </main>
 
-    <footer>
-      <span>Made with Astro</span>
-      <span>2025</span>
-    </footer>
+    <Footer />
   </body>
 </html>
