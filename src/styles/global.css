@@ -38,9 +38,9 @@ body {
 
   display: flex;
   flex-direction: column;
-
-  max-width: var(--content-width);
-  margin: 0px auto 0px;
+  align-items: center;
+  width: 100%;
+  padding: 0px 24px;
 
   line-height: 1.6;
 
@@ -52,6 +52,8 @@ body {
 main {
   flex: 1 0 auto;
   padding: 128px 0;
+  width: 100%;
+  max-width: var(--content-width);
 }
 
 section {
