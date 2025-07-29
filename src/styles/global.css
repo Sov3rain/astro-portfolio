@@ -13,6 +13,9 @@
   --color-secondary: light-dark(#6f6f6f, #a0a0a0);
   --color-tertiary: light-dark(#707070, #8f8f8f);
   --color-bg: light-dark(#fff, #1a1a1a);
+
+  --font-primary: "Overused Grotesk";
+  --font-secondary: "Inter";
 }
 
 /* Use a more-intuitive box-sizing model */
@@ -25,7 +28,7 @@ html, body {
 }
 
 body {
-  font-family: "Overused Grotesk", sans-serif;
+  font-family: var(--font-primary), sans-serif;
 
   display: flex;
   flex-direction: column;
@@ -42,7 +45,7 @@ body {
 h1,
 h2,
 h3 {
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-secondary), sans-serif;
   line-height: 1.2;
   margin-bottom: 28px;
 }

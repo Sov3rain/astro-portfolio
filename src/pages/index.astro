@@ -3,6 +3,7 @@ import Column from '@components/Column.astro';
 import Footer from '@components/Footer.astro';
 import GridAutoFill from '@components/GridAutoFill.astro';
 import Project from '@components/Project.astro';
+
 import '@styles/global.css';
 
 const pageTitle = 'Samuel Duval';
@@ -29,7 +30,7 @@ const pageTitle = 'Samuel Duval';
           <Project
             title="Astro Portfolio"
             description="Lorem ipsum, dolor sit amet consectetur adipisicing elit."
-            url="/projects/astro-portfolio"
+            url="https://www.example.com/"
             external
           />
           <Project
@@ -51,11 +52,7 @@ const pageTitle = 'Samuel Duval';
             url="/writings/building-a-blog-with-astro"
           />
 
-          <Project
-            title="All writing"
-            description="Infrequent thoughts on code."
-            url="/writings"
-          />
+          <Project title="All writing" description="Infrequent thoughts on code." url="/writings" />
         </Column>
 
         <Column title="Column 3">

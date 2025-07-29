@@ -6,7 +6,7 @@ const { title, description, url, external = false } = Astro.props;
 
 <li class="column">
   <div id="container">
-    <a href={url}>{title}</a>
+    <a href={url} target={external ? '_blank' : '_self'}>{title}</a>
     {
       external && (
         <svg
