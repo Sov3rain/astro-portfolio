@@ -14,11 +14,14 @@
 *, *::before, *::after {
   box-sizing: border-box;
 }
+
 html, body {
   height: 100%;
 }
 
 body {
+  font-family: "Overused Grotesk", sans-serif;
+
   display: flex;
   flex-direction: column;
 
@@ -27,7 +30,6 @@ body {
   max-width: 650px;
 
   line-height: 1.6;
-  font-size: 18px;
   font-weight: 300;
 
   color: light-dark(#3a3a3a, #e5e5e5);
@@ -41,29 +43,32 @@ h2,
 h3 {
   font-family: "Inter", sans-serif;
   line-height: 1.2;
+  margin-bottom: 28px;
 }
 
 h1, h2 {
-  font-size: 18px;
-  font-weight: 400;
+  font-size: 1rem;
+  font-weight: 600;
 }
 
 h3 {
-  font-size: 16px;
-  font-weight: 300;
+  font-size: 14px;
+  font-weight: 400;
   color: light-dark(#6f6f6f, #a0a0a0);
 }
 
-p {
-  font-family: "Overused Grotesk", sans-serif;
+h3 > a {
+  color: light-dark(#6f6f6f, #a0a0a0);
 }
 
-main{
+
+
+main {
   flex: 1 0 auto;
   padding: 128px 0;
 }
 
-footer{
+footer {
   flex-shrink: 0;
 
   display: flex;
@@ -72,9 +77,30 @@ footer{
 
   margin: 10px 0px;
 
-  font-family: "Overused-Grotesk", sans-serif;
   font-size: 14px;
   font-weight: 300;
-  
+
   color: #707070;
+}
+
+.grid-auto-fill {
+  --min-col-size: 180px;
+
+  display: grid;
+  grid-template-columns:
+    repeat(auto-fit, minmax(min(var(--min-col-size), 100%), 1fr));
+  gap: 1rem;
+}
+
+/* .grid-auto-fill > div {
+  border: 1px solid red;
+} */
+
+.column {
+  display: flex;
+  flex-direction: column;
+}
+
+.prose {
+  margin-bottom: 28px;
 }

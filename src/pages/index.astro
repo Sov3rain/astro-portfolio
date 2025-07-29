@@ -1,5 +1,10 @@
 ---
-import '../styles/global.css';
+import Column from '@components/Column.astro';
+import GridAutoFill from '@components/GridAutoFill.astro';
+import Project from '@components/Project.astro';
+import '@styles/global.css';
+
+const pageTitle = 'Samuel Duval';
 ---
 
 <html lang="en">
@@ -8,15 +13,53 @@ import '../styles/global.css';
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <title>Astro</title>
+    <title>{pageTitle}</title>
   </head>
+
   <body>
     <main>
-      <h1>Astro</h1>
-      <p>Welcome</p>
+      <h1>{pageTitle}</h1>
+      <div class="prose">
+        <span><em>Welcome</em> aboard.</span>
+      </div>
+
+      <GridAutoFill>
+        <Column title="Projects" url="/">
+          <Project
+            title="Astro Portfolio"
+            description="Lorem ipsum, dolor sit amet consectetur adipisicing elit."
+            url="/projects/astro-portfolio"
+          />
+          <Project
+            title="Astro Blog"
+            description="Lorem ipsum, dolor sit amet consectetur adipisicing elit."
+            url="/projects/astro-blog"
+          />
+          <Project
+            title="Astro Website"
+            description="Lorem ipsum, dolor sit amet consectetur adipisicing elit."
+            url="/projects/astro-website"
+          />
+        </Column>
+
+        <Column title="Writings" url="/">
+          <Project
+            title="Building a blog with Astro"
+            description="Lorem ipsum, dolor sit amet consectetur adipisicing elit."
+            url="/writings/building-a-blog-with-astro"
+          />
+        </Column>
+
+        <Column title="Column 3">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </Column>
+      </GridAutoFill>
 
       <h2>Now</h2>
       <p>Let's build something.</p>
+
+      <h2>Connect</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
     </main>
 
     <footer>

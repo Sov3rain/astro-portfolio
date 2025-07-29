@@ -1,0 +1,25 @@
+---
+const { title, description, url } = Astro.props;
+---
+
+<li class="column">
+  <a href={url}>{title}</a>
+  <span>{description}</span>
+</li>
+
+<style>
+  li {
+    margin-top: 24px;
+  }
+
+  span {
+    font-weight: 400;
+    color: light-dark(#6f6f6f, #a0a0a0);
+  }
+
+  a {
+    font-weight: 600;
+    color: #ededed;
+    text-decoration-color: #6f6f6f;
+  }
+</style>
