@@ -5,14 +5,14 @@ const { title } = Astro.props;
 ---
 
 <div>
-  <h3>{title}</h3>
-  <ul>
-    <slot />
-  </ul>
+  <h2>{title}</h2>
+  <slot />
 </div>
 
 <style>
-  h3 {
+  h2 {
+    font-size: 0.875rem;
+    font-weight: 400;
     color: var(--color-secondary);
   }
 

@@ -3,6 +3,7 @@ import Column from '@components/Column.astro';
 import Footer from '@components/Footer.astro';
 import GridAutoFill from '@components/GridAutoFill.astro';
 import Project from '@components/Project.astro';
+import Prose from '@components/Prose.astro';
 
 import '@styles/global.css';
 
@@ -20,53 +21,60 @@ const pageTitle = 'Samuel Duval';
 
   <body>
     <main>
-      <h1>{pageTitle}</h1>
-      <div class="prose">
-        <span><em>Welcome</em> aboard.</span>
-      </div>
+      <section>
+        <Prose />
+      </section>
 
-      <GridAutoFill>
-        <Column title="Projects">
-          <Project
-            title="Astro Portfolio"
-            description="Lorem ipsum, dolor sit amet consectetur adipisicing elit."
-            url="https://www.example.com/"
-            external
-          />
-          <Project
-            title="Astro Blog"
-            description="Lorem ipsum, dolor sit amet consectetur adipisicing elit."
-            url="/projects/astro-blog"
-          />
-          <Project
-            title="Astro Website"
-            description="Lorem ipsum, dolor sit amet consectetur adipisicing elit."
-            url="/projects/astro-website"
-          />
-        </Column>
+      <section>
+        <GridAutoFill>
+          <Column title="Projects">
+            <Project
+              title="Astro Portfolio"
+              description="Lorem ipsum, dolor sit amet consectetur adipisicing elit."
+              url="https://www.example.com/"
+              external
+            />
+            <Project
+              title="Astro Blog"
+              description="Lorem ipsum, dolor sit amet consectetur adipisicing elit."
+              url="/projects/astro-blog"
+            />
+            <Project
+              title="Astro Website"
+              description="Lorem ipsum, dolor sit amet consectetur adipisicing elit."
+              url="/projects/astro-website"
+            />
+          </Column>
 
-        <Column title="Writings">
-          <Project
-            title="Building a blog with Astro"
-            description="Lorem ipsum, dolor sit amet consectetur adipisicing elit."
-            url="/writings/building-a-blog-with-astro"
-          />
+          <Column title="Writing">
+            <Project
+              title="Building a blog with Astro"
+              description="Lorem ipsum, dolor sit amet consectetur adipisicing elit."
+              url="/writings/building-a-blog-with-astro"
+            />
 
-          <Project title="All writing" description="Infrequent thoughts on code." url="/writings" />
-        </Column>
+            <Project
+              title="All writing"
+              description="Infrequent thoughts on code."
+              url="/writings"
+            />
+          </Column>
 
-        <Column title="Column 3">
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        </Column>
-      </GridAutoFill>
+          <Column title="Building" />
+        </GridAutoFill>
+      </section>
 
-      <h2>Now</h2>
-      <p>Let's build something.</p>
+      <section>
+        <h2>Now</h2>
+        <p>Let's build something.</p>
+      </section>
 
-      <h2>Connect</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <section>
+        <h2>Connect</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </section>
     </main>
-
+    
     <Footer />
   </body>
 </html>

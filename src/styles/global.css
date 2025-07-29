@@ -16,10 +16,14 @@
 
   --font-primary: "Overused Grotesk";
   --font-secondary: "Inter";
+
+  --page-width: 1072px;
+  --content-width: 640px;
 }
 
 /* Use a more-intuitive box-sizing model */
 *, *::before, *::after {
+  margin: 0;
   box-sizing: border-box;
 }
 
@@ -28,40 +32,21 @@ html, body {
 }
 
 body {
-  font-family: var(--font-primary), sans-serif;
+  font-family:
+    var(--font-primary),
+    sans-serif;
 
   display: flex;
   flex-direction: column;
 
+  max-width: var(--content-width);
   margin: 0px auto 0px;
-  padding: 0px 10px;
-  max-width: 650px;
 
   line-height: 1.6;
 
+  background-color: var(--color-bg);
+
   -webkit-font-smoothing: antialiased;
-}
-
-h1,
-h2,
-h3 {
-  font-family: var(--font-secondary), sans-serif;
-  line-height: 1.2;
-  margin-bottom: 28px;
-}
-
-h1, h2 {
-  font-size: 1rem;
-  font-weight: 600;
-}
-
-h3 {
-  font-size: 14px;
-  font-weight: 400;
-}
-
-a {
-  text-underline-offset: 2.5px;
 }
 
 main {
@@ -69,6 +54,26 @@ main {
   padding: 128px 0;
 }
 
-.prose {
-  margin-bottom: 28px;
+section {
+  margin-bottom: 64px;
+}
+
+h1,
+h2,
+h3 {
+  font-family:
+    var(--font-secondary),
+    sans-serif;
+
+  line-height: 1.2;
+  margin: 0 0 28px;
+}
+
+h1, h2 {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+a {
+  text-underline-offset: 2.5px;
 }
