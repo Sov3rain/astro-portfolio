@@ -5,7 +5,7 @@ const { title, description, url, external = false } = Astro.props;
 ---
 
 <li class="column">
-  <div id="container">
+  <div class="title">
     <a href={url} target={external ? '_blank' : '_self'}>{title}</a>
     {
       external && (
@@ -32,24 +32,21 @@ const { title, description, url, external = false } = Astro.props;
     display: flex;
     flex-direction: column;
 
-    min-height: 78px;
+    min-height: 84px;
 
     margin-top: 24px;
   }
 
-  p {
-    font-weight: 400;
-    color: var(--color-secondary);
+  li > p {
     margin: 0;
+    color: var(--color-secondary);
   }
 
   a {
     font-weight: 500;
-    color: var(--color-primary);
-    text-decoration-color: var(--color-primary);
   }
 
-  #container {
+  .title {
     display: flex;
     flex-direction: row;
     align-items: center;
