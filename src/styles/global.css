@@ -13,6 +13,7 @@
   --color-secondary: light-dark(#6f6f6f, #a0a0a0);
   --color-tertiary: light-dark(#707070, #8f8f8f);
   --color-bg: light-dark(#fff, #1a1a1a);
+  --color-underline: light-dark(#a0a0a0, #707070);
 
   --font-primary: "Overused Grotesk";
   --font-secondary: "Inter";
@@ -66,7 +67,7 @@ h3 {
     var(--font-secondary),
     sans-serif;
   font-size: 1rem;
-  font-weight: 600;
+  font-weight: 500;
   line-height: 1.2;
 
   margin: 0 0 28px;
@@ -76,10 +77,18 @@ h3 {
 
 a {
   text-underline-offset: 2.5px;
+  text-decoration: underline;
+  text-decoration-color: var(--color-underline);
   color: var(--color-primary);
+}
+
+a:hover {
+  text-decoration-color: var(--color-primary);
 }
 
 p {
   text-wrap: pretty;
   color: var(--color-primary);
+
+  margin: 0 0 28px;
 }
