@@ -1,0 +1,40 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import BackLink from '@components/BackLink.astro';
+import '@styles/global.css';
+
+const { frontmatter } = Astro.props;
+
+const postDate = new Date(frontmatter.date)
+  ?.toLocaleDateString('fr', { dateStyle: 'long' })
+  ?.replace(/./, (c) => c.toUpperCase());
+---
+
+<BaseLayout pageTitle={frontmatter.title}>
+  <BackLink title="Articles" url="/posts" />
+
+  <div class="header">
+    <h1>{frontmatter.title}</h1>
+    <time>le {postDate}</time>
+  </div>
+
+  <article>
+    <slot />
+  </article>
+</BaseLayout>
+
+<style>
+  h1 {
+    margin: 0;
+    font-weight: bold;
+  }
+
+  time {
+    font-family: var(--font-secondary);
+    color: var(--color-tertiary);
+  }
+
+  .header {
+    margin-bottom: 42px;
+  }
+</style>
