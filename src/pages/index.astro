@@ -1,8 +1,8 @@
 ---
 import Prose from '@components/Prose.astro';
-import GridAutoFill from '@components/GridAutoFill.astro';
-import GridColumn from '@components/GridColumn.astro';
-import GridItem from '@components/GridItem.astro';
+import Works from '@components/Works.astro';
+import Now from '@components/Now.astro';
+import Connect from '@components/Connect.astro';
 import Footer from '@components/Footer.astro';
 
 import '@styles/global.css';
@@ -14,66 +14,19 @@ const pageTitle = 'Samuel Duval';
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
     <title>{pageTitle}</title>
   </head>
 
   <body>
     <main>
-      <section>
-        <Prose />
-      </section>
-
-      <section>
-        <GridAutoFill>
-          <GridColumn title="Projects">
-            <GridItem
-              title="Astro Portfolio"
-              description="Lorem ipsum, dolor sit amet consectetur adipisicing elit."
-              url="https://www.example.com/"
-              external
-            />
-            <GridItem
-              title="Astro Blog"
-              description="Lorem ipsum, dolor sit amet consectetur adipisicing elit."
-              url="/projects/astro-blog"
-            />
-            <GridItem
-              title="Astro Website"
-              description="Lorem ipsum, dolor sit amet consectetur adipisicing elit."
-              url="/projects/astro-website"
-            />
-          </GridColumn>
-
-          <GridColumn title="Writing">
-            <GridItem
-              title="Building a blog with Astro"
-              description="Lorem ipsum, dolor sit amet consectetur adipisicing elit."
-              url="/writings/building-a-blog-with-astro"
-            />
-
-            <GridItem
-              title="All writing"
-              description="Infrequent thoughts on code."
-              url="/writings"
-            />
-          </GridColumn>
-
-          <GridColumn title="Building" />
-        </GridAutoFill>
-      </section>
-
-      <section>
-        <h2>Now</h2>
-        <p>Let's build something.</p>
-      </section>
-
-      <section>
-        <h2>Connect</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-      </section>
+      <Prose />
+      <Works />
+      <Now />
+      <Connect />
     </main>
+
     <Footer />
   </body>
 </html>

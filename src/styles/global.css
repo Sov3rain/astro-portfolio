@@ -21,7 +21,6 @@
   --content-width: 640px;
 }
 
-/* Use a more-intuitive box-sizing model */
 *, *::before, *::after {
   margin: 0;
   box-sizing: border-box;
@@ -66,16 +65,21 @@ h3 {
   font-family:
     var(--font-secondary),
     sans-serif;
-
-  line-height: 1.2;
-  margin: 0 0 28px;
-}
-
-h1, h2 {
   font-size: 1rem;
   font-weight: 600;
+  line-height: 1.2;
+
+  margin: 0 0 28px;
+
+  color: var(--color-primary);
 }
 
 a {
   text-underline-offset: 2.5px;
+  color: var(--color-primary);
+}
+
+p {
+  text-wrap: pretty;
+  color: var(--color-primary);
 }

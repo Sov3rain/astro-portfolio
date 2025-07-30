@@ -1,0 +1,40 @@
+---
+import GridAutoFill from './GridAutoFill.astro';
+import GridColumn from './GridColumn.astro';
+import GridItem from './GridItem.astro';
+---
+
+<section>
+  <GridAutoFill>
+    <GridColumn title="Projects">
+      <GridItem
+        title="Astro Portfolio"
+        description="Lorem ipsum, dolor sit amet consectetur adipisicing elit."
+        url="https://www.example.com/"
+        external
+      />
+      <GridItem
+        title="Astro Blog"
+        description="Lorem ipsum, dolor sit amet consectetur adipisicing elit."
+        url="/projects/astro-blog"
+      />
+      <GridItem
+        title="Astro Website"
+        description="Lorem ipsum, dolor sit amet consectetur adipisicing elit."
+        url="/projects/astro-website"
+      />
+    </GridColumn>
+
+    <GridColumn title="Writing">
+      <GridItem
+        title="Building a blog with Astro"
+        description="Lorem ipsum, dolor sit amet consectetur adipisicing elit."
+        url="/writings/building-a-blog-with-astro"
+      />
+
+      <GridItem title="All writing" description="Infrequent thoughts on code." url="/writings" />
+    </GridColumn>
+
+    <GridColumn title="Building" />
+  </GridAutoFill>
+</section>
