@@ -33,6 +33,7 @@ const { title, description, url, external = false } = Astro.props;
     flex-direction: column;
 
     min-height: 84px;
+    min-height: clamp(48px, 10vw, 84px);
 
     margin-top: 24px;
   }

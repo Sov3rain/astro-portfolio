@@ -51,7 +51,7 @@ body {
 
 main {
   flex: 1 0 auto;
-  padding: 128px 0;
+  padding: clamp(64px, 10vw, 128px) 0;
   width: 100%;
   max-width: var(--content-width);
 }
@@ -79,7 +79,7 @@ a {
   text-underline-offset: 2.5px;
   text-decoration: underline;
   text-decoration-color: var(--color-underline);
-  
+
   color: var(--color-primary);
 }
 
