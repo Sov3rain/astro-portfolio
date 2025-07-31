@@ -6,20 +6,21 @@ const { title, url } = Astro.props;
 
 <nav class="back-link">
   <a href={url}>
-    <div class="title">
+    <div class="title-container">
       <svg
         id="arrow-left"
         viewBox="0 0 24 24"
         width="20"
-        height='20"'
+        height="20"
         fill="none"
+        transform="rotate(270 0 0)"
         xmlns="http://www.w3.org/2000/svg"
       >
         <path
           d="m19 15.477-.02-9.672a.802.802 0 0 0-.218-.577c-.145-.152-.34-.228-.587-.228H8.499a.751.751 0 0 0-.777.76c0 .199.076.371.227.517.15.145.326.218.525.218h3.733l4.52-.129-1.728 1.54-9.767 9.783a.692.692 0 0 0-.232.518c0 .205.078.387.235.545a.74.74 0 0 0 .542.237.73.73 0 0 0 .527-.224l9.775-9.78 1.544-1.727-.143 4.188v4.065c0 .199.075.376.225.531.15.155.327.232.531.232.202 0 .38-.076.534-.228a.768.768 0 0 0 .23-.569Z"
           fill="#000"></path>
       </svg>
-      <span><em>{title}</em></span>
+      <span class="title"><em>{title}</em></span>
     </div>
   </a>
 </nav>
@@ -27,7 +28,7 @@ const { title, url } = Astro.props;
 <style>
   a {
     font-family: var(--font-tertiary);
-    font-size: 1.063rem;
+    font-size: 1.125rem;
 
     text-decoration: none;
   }
@@ -36,7 +37,7 @@ const { title, url } = Astro.props;
     position: sticky;
     grid-column: 1;
     top: var(--page-top);
-    
+
     z-index: 1;
   }
 
@@ -48,22 +49,20 @@ const { title, url } = Astro.props;
     }
   }
 
-  .title {
+  .title-container {
     display: flex;
     flex-direction: row;
     align-items: center;
     gap: 8px;
+    vertical-align: bottom;
   }
 
-  .title > span {
+  .title {
     font-weight: 500;
+    transform: translateY(2px);
   }
 
   svg path {
     fill: var(--color-primary);
-  }
-
-  #arrow-left {
-    transform: scaleX(-1);
   }
 </style>
