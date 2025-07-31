@@ -20,16 +20,23 @@
   --font-tertiary: "Newsreader";
 
   --page-width: 1072px;
+  --page-top: clamp(64px, 10vw, 128px);
+  --page-bottom: clamp(64px, 10vw, 128px);
+
   --content-width: 640px;
-  --content-padding: clamp(64px, 10vw, 128px) 0;
+
+  --side-column-width: 192px;
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   margin: 0;
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   height: 100%;
 }
 
@@ -53,27 +60,27 @@ body {
 
 .grid-container {
   display: grid;
-  grid-template-columns: 192px var(--content-width) 192px;
+  grid-template-columns: auto var(--content-width) auto;
+  column-gap: 24px;
   width: 100%;
-  max-width: calc(192px + var(--content-width) + 192px);
+  max-width: var(--page-width);
   flex: 1 0 auto;
+
+  padding-top: var(--page-top);
+  padding-bottom: var(--page-bottom);
 }
 
 .left-column {
   grid-column: 1;
-  /* Padding is handled by the BackLink component itself */
 }
 
 .main-content {
   grid-column: 2;
-  padding: var(--content-padding);
   width: 100%;
 }
 
 .right-column {
   grid-column: 3;
-  padding: var(--content-padding);
-  padding-left: 0;
 }
 
 /* Mobile responsive: collapse to single column */
@@ -87,10 +94,6 @@ body {
   .right-column {
     grid-column: unset;
     padding: 0;
-  }
-
-  .main-content {
-    padding: var(--content-padding);
   }
 
   .left-column {
