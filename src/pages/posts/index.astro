@@ -1,8 +1,11 @@
 ---
-import BackLink from '@components/BackLink.astro';
 import BaseLayout from '@layouts/BaseLayout.astro';
 ---
 
-<BaseLayout pageTitle="Articles">
-  <BackLink title="Index" url="/" />
+<BaseLayout
+  pageTitle="Articles"
+  showBackLink={true}
+  backLinkTitle="Index"
+  backLinkUrl="/"
+>
 </BaseLayout>

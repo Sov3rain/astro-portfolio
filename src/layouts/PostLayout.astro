@@ -1,6 +1,5 @@
 ---
 import BaseLayout from '@layouts/BaseLayout.astro';
-import BackLink from '@components/BackLink.astro';
 import '@styles/global.css';
 
 const { frontmatter } = Astro.props;
@@ -10,9 +9,12 @@ const postDate = new Date(frontmatter.date)
   ?.replace(/./, (c) => c.toUpperCase());
 ---
 
-<BaseLayout pageTitle={frontmatter.title}>
-  <BackLink title="Articles" url="/posts" />
-
+<BaseLayout
+  pageTitle={frontmatter.title}
+  showBackLink={true}
+  backLinkTitle="Articles"
+  backLinkUrl="/posts"
+>
   <div class="header">
     <h1>{frontmatter.title}</h1>
     <time>le {postDate}</time>

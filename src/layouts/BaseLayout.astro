@@ -1,7 +1,8 @@
 ---
 import Footer from "@components/Footer.astro";
+import BackLink from "@components/BackLink.astro";
 
-const { pageTitle } = Astro.props;
+const { pageTitle, showBackLink = false, backLinkTitle, backLinkUrl } = Astro.props;
 ---
 
 <html lang="en">
@@ -14,9 +15,19 @@ const { pageTitle } = Astro.props;
   </head>
 
   <body>
-    <main>
-      <slot />
-    </main>
+    <div class="grid-container">
+      <aside class="left-column">
+        {showBackLink && <BackLink title={backLinkTitle} url={backLinkUrl} />}
+      </aside>
+
+      <main class="main-content">
+        <slot />
+      </main>
+
+      <aside class="right-column">
+        <!-- Right column remains empty by default -->
+      </aside>
+    </div>
 
     <Footer />
   </body>
