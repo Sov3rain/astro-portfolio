@@ -3,26 +3,31 @@ import '@styles/global.css';
 ---
 
 <footer>
-  <span>© 2025 · Samuel Duval</span>
+  <div>
+    <span>© 2025 · Samuel Duval</span>
+  </div>
 </footer>
 
 <style>
-  footer {
-    flex-shrink: 0;
-
+  div {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    width: 100%;
-    max-width: var(--content-width);
-    padding: 10px 0px 32px;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+
+  footer {
+    position: relative;
+    width: calc(var(--body-margins-left-right) + 100% + var(--body-margins-left-right));
+    min-height: 48px;
 
     font-family: var(--font-primary);
     font-size: 0.875rem;
     font-weight: 400;
-    
+
     color: var(--color-tertiary);
 
-    border-top: 1px solid var(--color-tertiary);
+    border-top: 1px solid var(--color-border);
   }
 </style>
