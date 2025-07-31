@@ -8,8 +8,8 @@ const { title, url } = Astro.props;
       <svg
         id="arrow-left"
         viewBox="0 0 24 24"
-        width="18"
-        height='18"'
+        width="20"
+        height='20"'
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
@@ -25,19 +25,19 @@ const { title, url } = Astro.props;
 <style>
   a {
     font-family: var(--font-tertiary);
-    font-size: 1.1rem;
+    font-size: 1.063rem;
 
     text-decoration: none;
   }
 
   @media only screen and (min-width: 993px) {
     nav {
-      position: absolute;
+      position: fixed;
       top: 0;
       left: 0;
 
       padding: var(--content-padding);
-      padding-left: 24px;
+      padding-left: clamp(24px, 20vw, 512px);
     }
   }
 
@@ -49,7 +49,7 @@ const { title, url } = Astro.props;
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 4px;
+    gap: 8px;
   }
 
   .title > span {
