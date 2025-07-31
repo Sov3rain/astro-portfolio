@@ -31,7 +31,22 @@ const { title, url } = Astro.props;
   }
 
   .back-link {
-    margin-bottom: 42px;
+    position: fixed;
+    top: 0;
+    width: 192px;
+    padding: var(--content-padding);
+    padding-right: 0;
+    z-index: 10;
+  }
+
+  /* On mobile, remove fixed positioning */
+  @media (max-width: 768px) {
+    .back-link {
+      position: static;
+      width: auto;
+      padding: 0;
+      margin-bottom: 42px;
+    }
   }
 
   .title {

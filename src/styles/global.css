@@ -61,8 +61,7 @@ body {
 
 .left-column {
   grid-column: 1;
-  padding: var(--content-padding);
-  padding-right: 0;
+  /* Padding is handled by the BackLink component itself */
 }
 
 .main-content {
