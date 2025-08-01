@@ -61,7 +61,7 @@ body {
 
 .grid-container {
   display: grid;
-  grid-template-columns: auto var(--content-width) auto;
+  grid-template-columns: 1fr var(--content-width) 1fr;
   column-gap: var(--body-margins-left-right);
   width: 100%;
   max-width: var(--page-width);
