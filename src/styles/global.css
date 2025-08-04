@@ -141,3 +141,22 @@ p {
 
   margin: 0 0 28px;
 }
+
+/* Inline code */
+p > code {
+  padding: 4px;
+
+  border-radius: 6px;
+  background-color: var(--color-border);
+}
+
+article > pre {
+  padding: 16px;
+  margin: 0 0 28px;
+
+  border-radius: 8px;
+}
+
+/* Code block */
+pre > code {
+}

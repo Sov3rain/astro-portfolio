@@ -1,0 +1,92 @@
+{
+  "name": "Minimal Mono",
+  "settings": [
+    {
+      "settings": {
+        "background": "#232323",
+        "foreground": "#C0C0C0"
+      }
+    },
+    {
+      "name": "Comment",
+      "scope": ["comment", "punctuation.definition.comment"],
+      "settings": {
+        "foreground": "#606060",
+        "fontStyle": "italic"
+      }
+    },
+    {
+      "name": "String",
+      "scope": ["string", "string.quoted", "string.template"],
+      "settings": {
+        "foreground": "#AAAAAA"
+      }
+    },
+    {
+      "name": "Number & Boolean",
+      "scope": ["constant.numeric", "constant.language.boolean", "constant.character", "constant.other"],
+      "settings": {
+        "foreground": "#888888"
+      }
+    },
+    {
+      "name": "Variable",
+      "scope": ["variable", "variable.other", "meta.definition.variable"],
+      "settings": {
+        "foreground": "#CCCCCC"
+      }
+    },
+    {
+      "name": "Keyword & Storage",
+      "scope": ["keyword", "keyword.control", "storage", "storage.type"],
+      "settings": {
+        "foreground": "#999999",
+        "fontStyle": "bold"
+      }
+    },
+    {
+      "name": "Function & Method",
+      "scope": ["entity.name.function", "support.function", "meta.function-call"],
+      "settings": {
+        "foreground": "#BBBBBB"
+      }
+    },
+    {
+      "name": "Type & Class",
+      "scope": ["entity.name.type", "support.type", "meta.type"],
+      "settings": {
+        "foreground": "#999999"
+      }
+    },
+    {
+      "name": "Tag & Component",
+      "scope": ["entity.name.tag", "meta.tag", "support.class.component"],
+      "settings": {
+        "foreground": "#AAAAAA"
+      }
+    },
+    {
+      "name": "Punctuation",
+      "scope": ["punctuation", "punctuation.separator", "punctuation.terminator"],
+      "settings": {
+        "foreground": "#666666"
+      }
+    },
+    {
+      "name": "Braces & Delimiters",
+      "scope": ["meta.brace", "meta.delimiter"],
+      "settings": {
+        "foreground": "#777777"
+      }
+    },
+    {
+      "name": "Invalid / Deprecated",
+      "scope": ["invalid", "invalid.illegal", "markup.invalid"],
+      "settings": {
+        "foreground": "#FFFFFF",
+        "background": "#660000",
+        "fontStyle": "underline"
+      }
+    }
+  ]
+}
