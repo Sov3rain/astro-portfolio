@@ -24,9 +24,20 @@
   --page-top: clamp(64px, 10vw, 128px);
   --page-bottom: clamp(64px, 10vw, 128px);
 
+  --color-scrollbar: light-dark(#e8e8e8, #2e2e2e);
+
   --body-margins-left-right: 24px;
 
   --content-width: 640px;
+}
+
+@media (prefers-color-scheme: dark) {
+
+  .astro-code,
+  .astro-code span {
+    color: var(--shiki-dark) !important;
+    background-color: var(--shiki-dark-bg) !important;
+  }
 }
 
 *,
@@ -34,6 +45,8 @@
 *::after {
   margin: 0;
   box-sizing: border-box;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-scrollbar) transparent;
 }
 
 html,
@@ -143,14 +156,14 @@ p {
 }
 
 /* Inline code */
-p > code {
+p>code {
   padding: 4px;
 
   border-radius: 6px;
   background-color: var(--color-border);
 }
 
-article > pre {
+article>pre {
   padding: 16px;
   margin: 0 0 28px;
 
@@ -158,5 +171,45 @@ article > pre {
 }
 
 /* Code block */
-pre > code {
+pre>code {}
+
+hr {
+  height: 1px;
+  border: none;
+  background: var(--color-border);
+  margin-bottom: 28px;
+}
+
+ul {
+  padding: 0 1rem;
+  margin: 1rem 0 28px;
+}
+
+li {
+  color: var(--color-primary);
+}
+
+li::marker {
+  color: var(--color-secondary);
+}
+
+blockquote {
+  padding: 0 1rem;
+  margin: 1rem 0 28px;
+}
+
+blockquote>p {
+  color: var(--color-secondary);
+}
+
+blockquote>p::before {
+  content: "“";
+  padding-right: 0.1rem;
+  color: var(--color-secondary);
+}
+
+blockquote>p::after {
+  content: "”";
+  padding-left: 0.1rem;
+  color: var(--color-secondary);
 }

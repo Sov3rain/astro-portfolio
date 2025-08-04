@@ -1,53 +1,25 @@
 ---
 layout: "@layouts/PostLayout.astro"
 title: 'Créer une API RESTful avec Firebase Functions et Koa'
-date: 2023-10-03T16:42:04+02:00
+date: 2023-10-03
 ---
 
-Le web fourmille de tutoriels sur la création d'APIs avec Node.js et Express. Mais je voulais essayer quelque chose de différent. J'ai donc décidé de créer une API RESTful avec Firebase Cloud Functions et Koa.
+Quand j'ai besoin d'une micro API serverless, je me tourne souvent vers des solutions comme Firebase Functions. Couplé avec un framework comme Koa, on a vite quelque chose de fonctionnel.
 
 ## Prérequis
 
-Avant de commencer, vérifions que vous avez tout ce qu'il faut :
-
-- Un compte Firebase.
+- Un compte Firebase Blaze (pay as you go).
 - Node.js.
 
-## Configuration de Firebase
+## Configuration
 
-Créez un projet Firebase dans la console Firebase (https://console.firebase.google.com/). Après ça, installez les outils Firebase CLI et connectez-vous à votre compte Firebase en tapant ces commandes dans votre terminal :
-
-```bash
-npm install -g firebase-tools
-firebase login
-```
-
-Ensuite, initialisez votre projet Firebase avec cette commande :
-
-```bash
-firebase init functions
-```
-
-Suivez les instructions pour sélectionner votre projet Firebase.
-
-> Note : vous devez passer votre projet Firebase sur la formule Blaze pour pouvoir utiliser les Cloud Functions.
-
-## Configuration de Koa
-
-On a deja un fichier `package.json` dans le dossier `functions` qui a été créé par Firebase CLI, pratique. Placez vous dans le dossier `functions` et installez Koa et le routeur Koa avec cette commande :
+Une fois le projet [Firebase initialisé](https://firebase.google.com/docs/functions/get-started?gen=2nd) sur votre machine, installez les librairies [koa](https://koajs.com/) et [koa-tree-router](https://github.com/steambap/koa-tree-router) avec cette commande :
 
 ```bash
 cd functions
-npm install koa koa-tree-router
+npm i koa koa-tree-router
 ```
-
-## Maintenant, le code !
-
-Ouvrez le fichier `index.js` dans le dossier `functions` et supprimez tout le code présent.
-
-Si vous êtes familier avec Express, vous verrez que Koa est très similaire. Je ne vais donc pas décrire chaque ligne instruction.
-
-> Note : cet exemple utilise les modules ECMAScript. Vous devez donc utiliser Node.js 18 ou supérieur.
+Ouvrez le fichier `index.js` dans le dossier `functions` et supprimez tout le code présent. Ensuite, ajoutez le code suivant :
 
 ```javascript
 import * as functions from 'firebase-functions';
@@ -74,29 +46,31 @@ router.post('/', async (ctx) => {
 
 app.use(router.routes());
 
-export const helloWorld = functions.region('europe-west1').https.onRequest(app.callback());
+// Export the app as a Firebase function
+export const helloWorld = functions
+  .region('europe-west1')
+  .https
+  .onRequest(app.callback());
 ```
+
+On a maintenant deux routes `GET /` et `POST /`. La première renvoie un message de bienvenue, la seconde affiche le corps de la requête dans la console et renvoie le même corps en réponse.
 
 Quelques différences avec Express qui méritent d'être notées :
 
-- Koa regroupe les arguments de requête dans un seul objet `ctx` (contexte) au lieu de les séparer en plusieurs objets (req, res, next).
 - Vous n'avez pas besoin de parser le corps de la requête avec un middleware. Firebase le fait pour vous et le place dans `ctx.req.body`.
 - Koa n'a pas de méthode `send()` pour envoyer une réponse. Vous devez utiliser `ctx.body` et lui assigner une valeur.
-- Il faut exporter l'application Koa avec `app.callback()` pour que Firebase puisse l'utiliser et mapper les requêtes HTTP.
 
 ## Déploiement
 
-Déployez votre API avec cette commande dans votre terminal :
+Déployez votre fonction avec la commande suivante :
 
 ```bash
 firebase deploy --only functions
 ```
 
-Une fois le déploiement terminé, Firebase vous donnera l'URL de votre API. Vous pourrez accéder à vos endpoints à partir de cette URL.
+## Développement local
 
-## Bonus
-
-Si vous voulez pouvoir lancer votre API en local pour la tester, vous pouvez ajouter ce bloc de code à votre fichier `index.js` :
+Si vous voulez pouvoir lancer votre API en local pour la tester sans utiliser l'émulateur de Firebase, vous pouvez ajouter ce bloc de code à votre fichier `index.js` :
 
 ```javascript
 function isCloudFunctions() {
@@ -111,6 +85,8 @@ if (!isCloudFunctions()) {
 }
 ```
 
-## Conclusion
+Lancez alors la commande suivante :
 
-Bam ! Vous avez une API RESTful avec Firebase Cloud Functions et Koa. Rapide et pratique pour développer des petites APIs sans avoir à gérer des serveurs. Vous pouvez maintenant ajouter plus de routes et de fonctionnalités à votre API en fonction de vos besoins.
+```bash
+node index.js
+```
