@@ -13,7 +13,7 @@
   --color-secondary: light-dark(#6f6f6f, #a0a0a0);
   --color-tertiary: light-dark(#707070, #8f8f8f);
   --color-bg: light-dark(#fff, #1a1a1a);
-  --color-underline: light-dark(#a0a0a0, #707070);
+  --color-underline: light-dark(#a0a0a0, #505050);
   --color-border: light-dark(#e8e8e8, #2e2e2e);
 
   --font-primary: "Overused Grotesk";
@@ -125,7 +125,7 @@ h3 {
 a {
   text-underline-offset: 2.5px;
   text-decoration: underline;
-  text-decoration-thickness: 1px;
+  text-decoration-thickness: 0.5px;
   text-decoration-color: var(--color-underline);
 
   color: var(--color-primary);
