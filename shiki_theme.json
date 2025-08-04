@@ -24,7 +24,12 @@
     },
     {
       "name": "Number & Boolean",
-      "scope": ["constant.numeric", "constant.language.boolean", "constant.character", "constant.other"],
+      "scope": [
+        "constant.numeric",
+        "constant.language.boolean",
+        "constant.character",
+        "constant.other"
+      ],
       "settings": {
         "foreground": "#888888"
       }
@@ -46,7 +51,11 @@
     },
     {
       "name": "Function & Method",
-      "scope": ["entity.name.function", "support.function", "meta.function-call"],
+      "scope": [
+        "entity.name.function",
+        "support.function",
+        "meta.function-call"
+      ],
       "settings": {
         "foreground": "#BBBBBB"
       }
@@ -67,7 +76,11 @@
     },
     {
       "name": "Punctuation",
-      "scope": ["punctuation", "punctuation.separator", "punctuation.terminator"],
+      "scope": [
+        "punctuation",
+        "punctuation.separator",
+        "punctuation.terminator"
+      ],
       "settings": {
         "foreground": "#666666"
       }
@@ -86,6 +99,41 @@
         "foreground": "#FFFFFF",
         "background": "#660000",
         "fontStyle": "underline"
+      }
+    },
+    {
+      "name": "Diff Added",
+      "scope": [
+        "markup.inserted",
+        "markup.inserted.diff",
+        "meta.diff.header.git",
+        "punctuation.definition.inserted.diff"
+      ],
+      "settings": {
+        "foreground": "#88AA88"
+      }
+    },
+    {
+      "name": "Diff Removed (fallback)",
+      "scope": [
+        "markup.deleted",
+        "markup.deleted.diff",
+        "meta.diff.header.from-file",
+        "punctuation.definition.deleted.diff"
+      ],
+      "settings": {
+        "foreground": "#AA8888"
+      }
+    },
+    {
+      "name": "Diff Removed",
+      "scope": [
+        "markup.deleted",
+        "markup.deleted.diff",
+        "punctuation.definition.deleted.diff"
+      ],
+      "settings": {
+        "foreground": "#AA8888"
       }
     }
   ]

@@ -33,7 +33,7 @@ La variable `_number` capturée existe toujours en mémoire, car référencée p
 
 La solution est plutôt simple, il faut détruire toutes les références restantes. Ici il suffit de détruire les delegates du bouton :
 
-```csharp
+```diff
 Button _button;
 int _number = 0;
 
