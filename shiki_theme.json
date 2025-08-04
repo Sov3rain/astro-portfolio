@@ -33,7 +33,7 @@
       "name": "Variable",
       "scope": ["variable", "variable.other", "meta.definition.variable"],
       "settings": {
-        "foreground": "#CCCCCC"
+        "foreground": "#E0E0E0"
       }
     },
     {
@@ -55,7 +55,7 @@
       "name": "Type & Class",
       "scope": ["entity.name.type", "support.type", "meta.type"],
       "settings": {
-        "foreground": "#999999"
+        "foreground": "#DDDDDD"
       }
     },
     {
