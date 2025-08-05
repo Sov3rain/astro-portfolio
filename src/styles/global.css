@@ -6,13 +6,13 @@
 
 :root {
   color-scheme: light dark;
-
   --color-primary: light-dark(#3a3a3a, #e5e5e5);
   --color-secondary: light-dark(#6f6f6f, #a0a0a0);
-  --color-tertiary: light-dark(#707070, #8f8f8f);
+  --color-tertiary: light-dark(#767676, #828282);
   --color-bg: light-dark(#fff, #1a1a1a);
   --color-underline: light-dark(#a0a0a0, #505050);
   --color-border: light-dark(#e8e8e8, #2e2e2e);
+  --color-scrollbar: light-dark(#e8e8e8, #2e2e2e);
 
   --font-primary: "Overused Grotesk", sans-serif;
   --font-secondary: "Inter", sans-serif;
@@ -22,8 +22,6 @@
   --page-width: 1072px;
   --page-top: clamp(64px, 10vw, 128px);
   --page-bottom: clamp(64px, 10vw, 128px);
-
-  --color-scrollbar: light-dark(#e8e8e8, #2e2e2e);
 
   --body-margins-left-right: 24px;
 
