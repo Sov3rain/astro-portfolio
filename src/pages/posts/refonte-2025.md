@@ -4,9 +4,7 @@ title: "Refonte 2025"
 date: 2025-08-05
 ---
 
-Effacer la friction des choix d'hier. Je travaille sur plusieurs machines et installer la bonne version de Hugo, les bons plugins et réinstaller le thème à chaque fois est fastidieux.
-
-Maîtriser la fabrication de bouts en bouts. Pouvoir tout modifier. En profiter pour utiliser des outils plus modernes.
+Effacer la friction des choix d'hier. Maîtriser la fabrication de bouts en bouts. Pouvoir tout modifier. En profiter pour utiliser des outils plus modernes.
 
 J'ai choisi de repartir sur une base plus simple, sans dépendances externes. Un choix minimaliste pour un site minimaliste. Les sources de ce site sont disponibles sur [GitHub](https://github.com/Sov3rain/astro-portfolio).
 
