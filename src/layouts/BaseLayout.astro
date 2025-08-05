@@ -3,6 +3,7 @@ import Footer from '@components/Footer.astro';
 import BackLink from '@components/BackLink.astro';
 
 const { pageTitle, showBackLink = false, backLinkTitle, backLinkUrl } = Astro.props;
+const isDev = import.meta.env.DEV;
 ---
 
 <html lang="en">
@@ -15,6 +16,17 @@ const { pageTitle, showBackLink = false, backLinkTitle, backLinkUrl } = Astro.pr
 
     <link rel="preconnect" href="https://rsms.me/" />
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+
+    {
+      !isDev && (
+        <script
+          defer
+          id="fairlytics-id-ajcu6jd9k7ysd6"
+          data-fairlyticskey="a1425ecfc336a87383e79488e075c38b"
+          src="https://app.fairlytics.tech/tag/tag.js"
+        />
+      )
+    }
   </head>
 
   <body>

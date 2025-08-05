@@ -18,4 +18,6 @@ J'ai choisi de repartir sur une base plus simple, sans dépendances externes. Un
 
 [Inter](https://rsms.me/inter/) et [Overused Grotesk](https://github.com/RandomMaerks/Overused-Grotesk) pour une typographie confortable. Construit avec [Astro](https://astro.build/), sans librairies externes et sans JavaScript. Déployé sur [Netlify](https://www.netlify.com/).
 
+Statistiques de visite avec [Fairlytics](https://fairlytics.tech/), un outil de statistiques respectueux de la vie privée.
+
 Grandement inspiré par [Paco Coursey](https://paco.me/) et [Steph Ango](https://stephango.com/).
