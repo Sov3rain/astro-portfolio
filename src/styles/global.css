@@ -1,8 +1,6 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap");
-
 @font-face {
   font-family: "Overused Grotesk";
-  src: url("https://raw.githubusercontent.com/RandomMaerks/Overused-Grotesk/master/fonts/variable/OverusedGroteskRoman-VF.ttf");
+  src: url("/fonts/OverusedGrotesk-VF.woff2") format("woff2-variations");
   font-weight: 300 900;
 }
 
@@ -16,9 +14,10 @@
   --color-underline: light-dark(#a0a0a0, #505050);
   --color-border: light-dark(#e8e8e8, #2e2e2e);
 
-  --font-primary: "Overused Grotesk";
-  --font-secondary: "Inter";
-  --font-tertiary: "Newsreader";
+  --font-primary: "Overused Grotesk", sans-serif;
+  --font-secondary: "Inter", sans-serif;
+  --font-tertiary: serif;
+  font-feature-settings: 'liga' 1, 'calt' 1; /* fix for Chrome */
 
   --page-width: 1072px;
   --page-top: clamp(64px, 10vw, 128px);
@@ -29,6 +28,10 @@
   --body-margins-left-right: 24px;
 
   --content-width: 640px;
+}
+
+@supports (font-variation-settings: normal) {
+  :root { font-family: InterVariable, sans-serif; }
 }
 
 @media (prefers-color-scheme: dark) {
