@@ -117,7 +117,7 @@ body {
 }
 
 section {
-  margin-bottom: 64px;
+  margin-bottom: 48px;
 }
 
 h1,
@@ -169,9 +169,6 @@ article>pre {
 
   border-radius: 8px;
 }
-
-/* Code block */
-pre>code {}
 
 hr {
   height: 1px;
