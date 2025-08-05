@@ -58,13 +58,16 @@ const allPosts = Object.values(import.meta.glob('./posts/*.md', { eager: true })
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
+    gap: 24px;
 
     text-decoration: none;
+    text-wrap: pretty;
   }
 
   time {
     font-family: monospace;
-    font-size: 1rem;
+    font-size: 0.875rem;
     letter-spacing: -0.05rem;
 
     color: var(--color-tertiary);
