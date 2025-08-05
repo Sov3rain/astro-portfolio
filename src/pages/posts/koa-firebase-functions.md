@@ -1,12 +1,12 @@
 ---
 layout: "@layouts/PostLayout.astro"
-title: 'Créer une API RESTful avec Firebase Functions et Koa'
+title: 'API REST avec Firebase Functions et Koa'
 date: 2023-10-03
 ---
 
 Quand j'ai besoin d'une micro API serverless, je me tourne souvent vers des solutions comme Firebase Functions. Couplé avec un framework comme Koa, on a vite quelque chose de fonctionnel.
 
-## Prérequis
+Avant de commencer, assurez-vous d'avoir les prérequis suivants :
 
 - Un compte Firebase Blaze (pay as you go).
 - Node.js.
