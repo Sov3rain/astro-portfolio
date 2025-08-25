@@ -4,7 +4,7 @@ title: "Refonte 2025"
 date: 2025-08-05
 ---
 
-Effacer la friction des choix d'hier. Maîtriser la fabrication de bouts en bouts. Pouvoir tout modifier. En profiter pour utiliser des outils plus modernes.
+Avec cette nouvelle mouture, le but est d'effacer la friction des choix d'hier. Maîtriser la fabrication de bout en bout. Pouvoir tout modifier et en profiter pour utiliser des outils plus modernes.
 
 J'ai choisi de repartir sur une base plus simple, sans dépendances externes. Un choix minimaliste pour un site minimaliste. Les sources de ce site sont disponibles sur [GitHub](https://github.com/Sov3rain/astro-portfolio).
 
