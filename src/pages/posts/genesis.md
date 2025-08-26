@@ -2,6 +2,7 @@
 layout: "@layouts/PostLayout.astro"
 title: "Genèse"
 date: 2021-04-14T14:53:23+02:00
+description: "Découverte de l'architecture Jamstack et choix d'Hugo pour créer un site statique simple et efficace, hébergé gratuitement sur Netlify."
 ---
 
 N’étant pas développeur web de formation, je ne souhaitais pas m’orienter vers une solution dynamique impliquant l'utilisation d'une base de données ou d'un CMS comme WordPress.

@@ -2,6 +2,7 @@
 layout: "@layouts/PostLayout.astro"
 title: ScriptableObject Singletons
 date: 2021-04-14T16:21:32+02:00
+description: "Alternative aux MonoBehaviour singletons dans Unity : utiliser des ScriptableObject pour créer des singletons plus flexibles et indépendants des scènes."
 ---
 
 Dans toutes les applications, il arrive un moment où un accès global à un composant est nécessaire. Configuration, gestion de données partagées entre scènes, etc. Le réflexe d'un développeur Unity est souvent de créer un `MonoBehaviour` singleton.

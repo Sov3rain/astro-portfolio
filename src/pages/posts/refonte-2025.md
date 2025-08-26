@@ -2,6 +2,7 @@
 layout: "@layouts/PostLayout.astro"
 title: "Refonte 2025"
 date: 2025-08-05
+description: "Migration vers Astro pour un site minimaliste et moderne. Choix de la simplicité avec Inter et Overused Grotesk, sans JavaScript ni dépendances externes."
 ---
 
 Avec cette nouvelle mouture, le but est d'effacer la friction des choix d'hier. Maîtriser la fabrication de bout en bout. Pouvoir tout modifier et en profiter pour utiliser des outils plus modernes.

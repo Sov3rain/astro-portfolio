@@ -7,10 +7,14 @@ const { frontmatter } = Astro.props;
 const postDate = new Date(frontmatter.date)
   ?.toLocaleDateString('fr', { dateStyle: 'long' })
   ?.replace(/./, (c) => c.toUpperCase());
+
+// Use description from frontmatter if available
+const metaDescription = frontmatter.description;
 ---
 
 <BaseLayout
   pageTitle={frontmatter.title}
+  metaDescription={metaDescription}
   showBackLink={true}
   backLinkTitle="Articles"
   backLinkUrl="/posts"

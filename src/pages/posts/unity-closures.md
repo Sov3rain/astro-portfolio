@@ -2,6 +2,7 @@
 layout: "@layouts/PostLayout.astro"
 title: "Unity closures"
 date: 2022-06-21
+description: "Comprendre les closures en C# et leur utilisation dans Unity. Exemples pratiques et bonnes pratiques pour éviter les pièges de performance."
 ---
 
 Prenons l'exemple d'un script qui ajoute un callback sur un bouton :

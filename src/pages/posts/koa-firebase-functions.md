@@ -2,6 +2,7 @@
 layout: "@layouts/PostLayout.astro"
 title: 'API REST avec Firebase Functions et Koa'
 date: 2023-10-03
+description: "Guide pratique pour créer une micro API serverless avec Firebase Functions et le framework Koa. Configuration, routage et déploiement expliqués étape par étape."
 ---
 
 Quand j'ai besoin d'une micro API serverless, je me tourne souvent vers des solutions comme Firebase Functions. Couplé avec un framework comme Koa, on a vite quelque chose de fonctionnel.

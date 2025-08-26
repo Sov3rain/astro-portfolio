@@ -2,8 +2,29 @@
 import Footer from '@components/Footer.astro';
 import BackLink from '@components/BackLink.astro';
 
-const { pageTitle, showBackLink = false, backLinkTitle, backLinkUrl } = Astro.props;
+export interface Props {
+  pageTitle: string;
+  metaDescription?: string;
+  showBackLink?: boolean;
+  backLinkTitle?: string;
+  backLinkUrl?: string;
+}
+
+const {
+  pageTitle,
+  metaDescription,
+  showBackLink = false,
+  backLinkTitle,
+  backLinkUrl
+} = Astro.props;
+
 const isDev = import.meta.env.DEV;
+
+// Simple defaults
+const siteUrl = 'https://samuelduval.me';
+const defaultDescription = 'Samuel Duval, développeur 3D à Nantes. Tech Lead chez Wonder Partner\'s, spécialisé en développement Unity, réalité augmentée et solutions innovantes.';
+const finalDescription = metaDescription || defaultDescription;
+const canonicalUrl = new URL(Astro.url.pathname, siteUrl).href;
 ---
 
 <html lang="en">
@@ -12,7 +33,24 @@ const isDev = import.meta.env.DEV;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
+
+    <!-- SEO Meta Tags -->
     <title>{pageTitle}</title>
+    <meta name="description" content={finalDescription} />
+    <meta name="author" content="Samuel Duval" />
+    <link rel="canonical" href={canonicalUrl} />
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={finalDescription} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:site_name" content="Samuel Duval" />
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={finalDescription} />
 
     <link rel="preconnect" href="https://rsms.me/" />
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
@@ -20,6 +58,7 @@ const isDev = import.meta.env.DEV;
     {
       !isDev && (
         <script
+          is:inline
           defer
           id="fairlytics-id-ajcu6jd9k7ysd6"
           data-fairlyticskey="a1425ecfc336a87383e79488e075c38b"

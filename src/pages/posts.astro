@@ -7,9 +7,18 @@ const allPosts = Object.values(import.meta.glob('./posts/*.md', { eager: true })
     return new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime();
   },
 );
+
+const pageTitle = "Articles";
+const metaDescription = "Articles et réflexions de Samuel Duval sur le développement, Unity, les technologies 3D, l'ingénierie logicielle et l'innovation.";
 ---
 
-<BaseLayout pageTitle="Articles" showBackLink={true} backLinkTitle="Index" backLinkUrl="/">
+<BaseLayout
+  pageTitle={pageTitle}
+  metaDescription={metaDescription}
+  showBackLink={true}
+  backLinkTitle="Index"
+  backLinkUrl="/"
+>
   <h1>Articles</h1>
   <ul class="blog-posts">
     {
