@@ -145,6 +145,15 @@ h3 {
   color: var(--color-primary);
 }
 
+/* Explicit font-size declarations for h1 elements within semantic containers */
+/* This prevents future browser changes from affecting heading appearance */
+section h1,
+article h1,
+aside h1,
+nav h1 {
+  font-size: 1rem;
+}
+
 a {
   text-underline-offset: 2.5px;
   text-decoration: underline;
