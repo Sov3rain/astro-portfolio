@@ -55,7 +55,15 @@ const canonicalUrl = new URL(Astro.url.pathname, siteUrl).href;
     <meta name="twitter:image" content="https://samuelduval.me/og-image.webp" />
 
     <link rel="preconnect" href="https://rsms.me/" />
-    <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+    <link
+      rel="stylesheet"
+      href="https://rsms.me/inter/inter.css"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript
+      ><link rel="stylesheet" href="https://rsms.me/inter/inter.css" type="text/css" /></noscript
+    >
 
     {
       !isDev && (
