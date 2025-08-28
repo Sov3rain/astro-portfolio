@@ -1,8 +1,18 @@
+/* Optimized fallback font for Overused Grotesk */
+@font-face {
+  font-family: "Overused Grotesk Fallback";
+  src: local("Arial"), local("Helvetica Neue"), local("Helvetica"), local("sans-serif");
+  size-adjust: 95%;
+  ascent-override: 90%;
+  descent-override: 22%;
+  line-gap-override: 0%;
+}
+
 @font-face {
   font-family: "Overused Grotesk";
   src: url("/fonts/OverusedGrotesk-VF.woff2") format("woff2-variations");
   font-weight: 300 900;
-  font-display: swap;
+  font-display: optional;
 }
 
 :root {
@@ -15,7 +25,7 @@
   --color-border: light-dark(#e8e8e8, #2e2e2e);
   --color-scrollbar: light-dark(#e8e8e8, #2e2e2e);
 
-  --font-primary: "Overused Grotesk", sans-serif;
+  --font-primary: "Overused Grotesk", "Overused Grotesk Fallback", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   --font-secondary: "Inter", sans-serif;
   --font-tertiary: serif;
   font-feature-settings: 'liga' 1, 'calt' 1; /* fix for Chrome */
@@ -57,9 +67,7 @@ body {
 }
 
 body {
-  font-family:
-    var(--font-primary),
-    sans-serif;
+  font-family: var(--font-primary);
 
   display: flex;
   flex-direction: column;
