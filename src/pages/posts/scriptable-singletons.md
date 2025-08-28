@@ -13,9 +13,9 @@ Un `ScriptableObject` est chargé en mémoire lorsqu’il est référencé, puis
 
 ## Implémentation
 
-Par défaut, un `ScriptableObject` n’est accessible que via des références définies dans l’inspecteur. Pour le rendre accessible globalement, une approche consiste à encapsuler la logique du singleton dans une classe générique et d'exposer une propriété statique `Instance` qui retourne l’instance unique.
+Par défaut, un `ScriptableObject` n’est accessible que via des références définies dans l’inspecteur. Pour le rendre accessible globalement, mon approche consiste à encapsuler la logique du singleton dans une classe générique et d'exposer une propriété statique `Instance` qui retourne l’instance unique.
 
-Le flag `HideFlags.DontUnloadUnusedAsset` garantit que l’instance ne sera pas libérée de la mémoire tant que l’application est lancée.
+Le flag `HideFlags.DontUnloadUnusedAsset` garantit que l’instance ne sera pas libérée de la mémoire, même si le `ScriptableObject` n’est pas référencé.
 
 Voici une classe de base générique :
 
