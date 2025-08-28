@@ -1,19 +1,5 @@
-/* Optimized fallback font for Overused Grotesk */
-@font-face {
-  font-family: "Overused Grotesk Fallback";
-  src: local("Arial"), local("Helvetica Neue"), local("Helvetica"), local("sans-serif");
-  size-adjust: 95%;
-  ascent-override: 90%;
-  descent-override: 22%;
-  line-gap-override: 0%;
-}
-
-@font-face {
-  font-family: "Overused Grotesk";
-  src: url("/fonts/OverusedGrotesk-VF.woff2") format("woff2-variations");
-  font-weight: 300 900;
-  font-display: optional;
-}
+@import url("inter.css");
+@import url("overused-grotesk.css");
 
 :root {
   color-scheme: light dark;
@@ -26,9 +12,10 @@
   --color-scrollbar: light-dark(#e8e8e8, #2e2e2e);
 
   --font-primary: "Overused Grotesk", "Overused Grotesk Fallback", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  --font-secondary: "Inter", sans-serif;
+  --font-secondary: "InterVariable", sans-serif;
   --font-tertiary: serif;
-  font-feature-settings: 'liga' 1, 'calt' 1; /* fix for Chrome */
+  /* fix for Chrome */
+  font-feature-settings: 'liga' 1, 'calt' 1;
 
   --page-width: 1072px;
   --page-top: clamp(64px, 10vw, 128px);
@@ -37,10 +24,6 @@
   --body-margins-left-right: 24px;
 
   --content-width: 640px;
-}
-
-@supports (font-variation-settings: normal) {
-  :root { font-family: InterVariable, sans-serif; }
 }
 
 @media (prefers-color-scheme: dark) {

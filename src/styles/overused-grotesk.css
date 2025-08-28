@@ -1,0 +1,16 @@
+@font-face {
+  font-family: "Overused Grotesk";
+  src: url("/fonts/OverusedGrotesk-VF.woff2") format("woff2-variations");
+  font-weight: 300 900;
+  font-display: optional;
+}
+
+/* Optimized fallback font for Overused Grotesk */
+@font-face {
+  font-family: "Overused Grotesk Fallback";
+  src: local("Arial"), local("Helvetica Neue"), local("Helvetica"), local("sans-serif");
+  size-adjust: 95%;
+  ascent-override: 90%;
+  descent-override: 22%;
+  line-gap-override: 0%;
+}
