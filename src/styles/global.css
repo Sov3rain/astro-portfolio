@@ -2,6 +2,7 @@
   font-family: "Overused Grotesk";
   src: url("/fonts/OverusedGrotesk-VF.woff2") format("woff2-variations");
   font-weight: 300 900;
+  font-display: swap;
 }
 
 :root {
