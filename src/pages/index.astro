@@ -1,65 +1,86 @@
 ---
-import BaseLayout from '@layouts/BaseLayout.astro';
-import Prose from '@components/Prose.astro';
-import Works from '@components/Works.astro';
-import Now from '@components/Now.astro';
-import Connect from '@components/Connect.astro';
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Prose from "@components/Prose.astro";
+import Works from "@components/Works.astro";
+import Now from "@components/Now.astro";
+import Connect from "@components/Connect.astro";
 
-import '@styles/global.css';
+import "@styles/global.css";
 
-const pageTitle = 'Samuel Duval';
+const pageTitle = "Samuel Duval";
 // No need to specify metaDescription - BaseLayout will use the default
 ---
 
+<script is:inline src="https://makegradient.com/embed.js"></script>
+
 <BaseLayout pageTitle={pageTitle}>
-  <div class="fade-up-container">
-    <Prose />
-    <Works />
-    <Now />
-    <Connect />
-  </div>
+    <div
+        class="gradient"
+        data-lumina-gradient
+        data-colors='["#A6A6A6","#434343","#000000","#2E2E2E","#000000"]'
+        data-mode="impasto"
+        data-noise="0.33"
+        data-speed="7"
+    >
+    </div>
+
+    <div class="fade-up-container">
+        <Prose />
+        <Works />
+        <Now />
+        <Connect />
+    </div>
 </BaseLayout>
 
 <style>
-  .fade-up-container {
-    /* Container for the animated sections */
-  }
-
-  .fade-up-container :global(section) {
-    opacity: 0;
-    transform: translateY(30px);
-    animation: fadeUp 0.8s ease-out forwards;
-  }
-
-  .fade-up-container :global(section:nth-child(1)) {
-    animation-delay: 0s;
-  }
-
-  .fade-up-container :global(section:nth-child(2)) {
-    animation-delay: 0.2s;
-  }
-
-  .fade-up-container :global(section:nth-child(3)) {
-    animation-delay: 0.4s;
-  }
-
-  .fade-up-container :global(section:nth-child(4)) {
-    animation-delay: 0.6s;
-  }
-
-  @keyframes fadeUp {
-    to {
-      opacity: 1;
-      transform: translateY(0);
+    .gradient {
+        opacity: 7%;
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
     }
-  }
 
-  /* Reduce motion fallback */
-  @media (prefers-reduced-motion: reduce) {
+    .fade-up-container {
+        /* Container for the animated sections */
+    }
+
     .fade-up-container :global(section) {
-      opacity: 1;
-      transform: none;
-      animation: none;
+        opacity: 0;
+        transform: translateY(30px);
+        animation: fadeUp 0.8s ease-out forwards;
     }
-  }
+
+    .fade-up-container :global(section:nth-child(1)) {
+        animation-delay: 0s;
+    }
+
+    .fade-up-container :global(section:nth-child(2)) {
+        animation-delay: 0.2s;
+    }
+
+    .fade-up-container :global(section:nth-child(3)) {
+        animation-delay: 0.4s;
+    }
+
+    .fade-up-container :global(section:nth-child(4)) {
+        animation-delay: 0.6s;
+    }
+
+    @keyframes fadeUp {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Reduce motion fallback */
+    @media (prefers-reduced-motion: reduce) {
+        .fade-up-container :global(section) {
+            opacity: 1;
+            transform: none;
+            animation: none;
+        }
+    }
 </style>
