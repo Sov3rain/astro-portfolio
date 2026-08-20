@@ -31,6 +31,24 @@ const canonicalUrl = new URL(Astro.url.pathname, siteUrl).href;
 <html lang="en">
   <head>
     <meta charset="utf-8" />
+    <meta name="color-scheme" content="dark light" />
+    <meta name="theme-color" content="#1a1a1a" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+
+    <style is:inline>
+      html,
+      body {
+        background-color: #1a1a1a;
+      }
+
+      @media (prefers-color-scheme: light) {
+        html,
+        body {
+          background-color: #fff;
+        }
+      }
+    </style>
+
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />

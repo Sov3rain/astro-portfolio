@@ -40,13 +40,15 @@ const pageTitle = "Samuel Duval";
         inset: 0;
         width: 100%;
         height: 100%;
-        z-index: -1;
+        z-index: 0;
         opacity: 0;
-        animation: gradientFadeIn 1200ms ease-out forwards;
+        pointer-events: none;
+        animation: gradientFadeIn 1500ms ease-out forwards;
     }
 
     .fade-up-container {
-        /* Container for the animated sections */
+        position: relative;
+        z-index: 1;
     }
 
     .fade-up-container :global(section) {
