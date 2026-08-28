@@ -24,6 +24,7 @@ export class LuminaGradientRenderer {
 
     this.renderer = new Renderer({
       alpha: false,
+      depth: false,
       dpr: options.dpr ?? DEFAULT_DPR,
       preserveDrawingBuffer: false,
     });
@@ -39,6 +40,9 @@ export class LuminaGradientRenderer {
     this.program = new Program(this.gl, {
       vertex: vertexShader,
       fragment: fragmentShader,
+      cullFace: null,
+      depthTest: false,
+      depthWrite: false,
       uniforms: {
         uTime: { value: this.time },
         uColor1: { value: new Vec3() },

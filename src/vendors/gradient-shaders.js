@@ -50,6 +50,10 @@ float snoise(vec2 v){
   return 130.0 * dot(m, g);
 }
 
+float inverseDistanceWeight(vec2 delta, float falloff) {
+    return 1.0 / (dot(delta, delta) + falloff);
+}
+
 // Hue Shift
 vec3 hueShift(vec3 color, float shift) {
     vec3 k = vec3(0.57735, 0.57735, 0.57735);
@@ -110,11 +114,11 @@ void main() {
          vec2 p3 = vec2(0.2, 0.8) + vec2(sin(time * 0.3) * moveScale, cos(time * 0.5) * moveScale);
          vec2 p4 = vec2(0.8, 0.8) + vec2(cos(time * 0.4) * moveScale, sin(time * 0.6) * moveScale);
 
-         float w0 = 1.0 / (length(warpedUv - p0) * length(warpedUv - p0) + falloff);
-         float w1 = 1.0 / (length(warpedUv - p1) * length(warpedUv - p1) + falloff);
-         float w2 = 1.0 / (length(warpedUv - p2) * length(warpedUv - p2) + falloff);
-         float w3 = 1.0 / (length(warpedUv - p3) * length(warpedUv - p3) + falloff);
-         float w4 = 1.0 / (length(warpedUv - p4) * length(warpedUv - p4) + falloff);
+         float w0 = inverseDistanceWeight(warpedUv - p0, falloff);
+         float w1 = inverseDistanceWeight(warpedUv - p1, falloff);
+         float w2 = inverseDistanceWeight(warpedUv - p2, falloff);
+         float w3 = inverseDistanceWeight(warpedUv - p3, falloff);
+         float w4 = inverseDistanceWeight(warpedUv - p4, falloff);
 
          float total = w0 + w1 + w2 + w3 + w4;
          color = (uColor1 * w0 + uColor2 * w1 + uColor3 * w2 + uColor4 * w3 + uColor5 * w4) / total;
@@ -148,11 +152,11 @@ void main() {
          vec2 p2 = vec2(0.8, 0.3) + vec2(cos(time * 0.5) * moveScale, sin(time * 0.3) * moveScale);
          vec2 p3 = vec2(0.2, 0.7) + vec2(sin(time * 0.2) * moveScale, cos(time * 0.3) * moveScale);
          vec2 p4 = vec2(0.8, 0.7) + vec2(cos(time * 0.3) * moveScale, sin(time * 0.4) * moveScale);
-         float bw0 = 1.0 / (length(wUv - p0) * length(wUv - p0) + falloff);
-         float bw1 = 1.0 / (length(wUv - p1) * length(wUv - p1) + falloff);
-         float bw2 = 1.0 / (length(wUv - p2) * length(wUv - p2) + falloff);
-         float bw3 = 1.0 / (length(wUv - p3) * length(wUv - p3) + falloff);
-         float bw4 = 1.0 / (length(wUv - p4) * length(wUv - p4) + falloff);
+         float bw0 = inverseDistanceWeight(wUv - p0, falloff);
+         float bw1 = inverseDistanceWeight(wUv - p1, falloff);
+         float bw2 = inverseDistanceWeight(wUv - p2, falloff);
+         float bw3 = inverseDistanceWeight(wUv - p3, falloff);
+         float bw4 = inverseDistanceWeight(wUv - p4, falloff);
          float bTotal = bw0 + bw1 + bw2 + bw3 + bw4;
          vec3 baseGrad = (uColor1*bw0 + uColor2*bw1 + uColor3*bw2 + uColor4*bw3 + uColor5*bw4) / bTotal;
 
@@ -186,11 +190,11 @@ void main() {
          vec2 p3 = vec2(0.2, 0.8) + vec2(sin(time * 0.3) * moveScale, cos(time * 0.5) * moveScale);
          vec2 p4 = vec2(0.8, 0.8) + vec2(cos(time * 0.4) * moveScale, sin(time * 0.6) * moveScale);
 
-         float w0 = 1.0 / (length(warpedUv - p0) * length(warpedUv - p0) + falloff);
-         float w1 = 1.0 / (length(warpedUv - p1) * length(warpedUv - p1) + falloff);
-         float w2 = 1.0 / (length(warpedUv - p2) * length(warpedUv - p2) + falloff);
-         float w3 = 1.0 / (length(warpedUv - p3) * length(warpedUv - p3) + falloff);
-         float w4 = 1.0 / (length(warpedUv - p4) * length(warpedUv - p4) + falloff);
+         float w0 = inverseDistanceWeight(warpedUv - p0, falloff);
+         float w1 = inverseDistanceWeight(warpedUv - p1, falloff);
+         float w2 = inverseDistanceWeight(warpedUv - p2, falloff);
+         float w3 = inverseDistanceWeight(warpedUv - p3, falloff);
+         float w4 = inverseDistanceWeight(warpedUv - p4, falloff);
 
          float total = w0 + w1 + w2 + w3 + w4;
          vec3 smoothGrad = (uColor1 * w0 + uColor2 * w1 + uColor3 * w2 + uColor4 * w3 + uColor5 * w4) / total;
@@ -295,11 +299,11 @@ void main() {
         vec2 hp2 = vec2(0.8, 0.25) + vec2(cos(time * 0.6) * hMoveScale, sin(time * 0.35) * hMoveScale);
         vec2 hp3 = vec2(0.2, 0.75) + vec2(sin(time * 0.25) * hMoveScale, cos(time * 0.45) * hMoveScale);
         vec2 hp4 = vec2(0.8, 0.75) + vec2(cos(time * 0.35) * hMoveScale, sin(time * 0.55) * hMoveScale);
-        float hw0 = 1.0 / (length(uv - hp0) * length(uv - hp0) + hFalloff);
-        float hw1 = 1.0 / (length(uv - hp1) * length(uv - hp1) + hFalloff);
-        float hw2 = 1.0 / (length(uv - hp2) * length(uv - hp2) + hFalloff);
-        float hw3 = 1.0 / (length(uv - hp3) * length(uv - hp3) + hFalloff);
-        float hw4 = 1.0 / (length(uv - hp4) * length(uv - hp4) + hFalloff);
+        float hw0 = inverseDistanceWeight(uv - hp0, hFalloff);
+        float hw1 = inverseDistanceWeight(uv - hp1, hFalloff);
+        float hw2 = inverseDistanceWeight(uv - hp2, hFalloff);
+        float hw3 = inverseDistanceWeight(uv - hp3, hFalloff);
+        float hw4 = inverseDistanceWeight(uv - hp4, hFalloff);
         float hTotal = hw0 + hw1 + hw2 + hw3 + hw4;
         vec3 holoBase = (uColor1*hw0 + uColor2*hw1 + uColor3*hw2 + uColor4*hw3 + uColor5*hw4) / hTotal;
 
