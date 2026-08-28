@@ -1,6 +1,6 @@
 import { Mesh, Program, Renderer, Triangle, Vec3 } from "ogl";
 
-import { fragmentShader, MODE_IDS, vertexShader } from "./gradient-shaders.js";
+import { fragmentShader, MODE_IDS, vertexShader } from "./modes.js";
 
 const DEFAULT_DPR = 0.75;
 const TARGET_FPS = 30;
