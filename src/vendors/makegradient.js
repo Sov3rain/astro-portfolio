@@ -4,13 +4,13 @@ import { fragmentShader, MODE_IDS, vertexShader } from "./gradient-shaders.js";
 
 const DEFAULT_DPR = 0.75;
 const TARGET_FPS = 30;
-const FRAME_DURATION = 1000 / TARGET_FPS;
-const TIME_PER_MILLISECOND = 0.0006;
+const FRAME_INTERVAL_MS = 1000 / TARGET_FPS;
+const ANIMATION_TIME_PER_MS = 0.0006;
 const MAX_FRAME_DELTA = 100;
 
 export class LuminaGradientRenderer {
   animationId = 0;
-  lastFrameTime = 0;
+  lastRenderTimestamp = null;
   time = 0;
   speed = 1;
   shouldRun = false;
@@ -58,7 +58,7 @@ export class LuminaGradientRenderer {
     this.updateUniforms(options.colors, options.mode, options.noiseStrength);
 
     this.resize = this.resize.bind(this);
-    this.update = this.update.bind(this);
+    this.tick = this.tick.bind(this);
     this.handleVisibilityChange = this.handleVisibilityChange.bind(this);
     this.resize();
 
@@ -130,28 +130,30 @@ export class LuminaGradientRenderer {
     this.renderer.render({ scene: this.mesh });
   }
 
-  update(timestamp) {
-    this.animationId = requestAnimationFrame(this.update);
-    if (typeof timestamp !== "number") return;
+  tick(timestamp) {
+    // requestAnimationFrame follows the display refresh rate. We only submit a
+    // WebGL frame once the 30 FPS interval has elapsed.
+    this.animationId = requestAnimationFrame(this.tick);
 
-    if (!this.lastFrameTime) {
-      this.lastFrameTime = timestamp;
+    if (this.lastRenderTimestamp === null) {
+      this.lastRenderTimestamp = timestamp;
       return;
     }
 
-    const elapsed = timestamp - this.lastFrameTime;
-    if (elapsed < FRAME_DURATION) return;
+    const elapsed = timestamp - this.lastRenderTimestamp;
+    if (elapsed < FRAME_INTERVAL_MS) return;
 
-    this.lastFrameTime = timestamp;
-    this.time += Math.min(elapsed, MAX_FRAME_DELTA) * TIME_PER_MILLISECOND * this.speed;
-    this.program.uniforms.uTime.value = this.time;
-    this.renderer.render({ scene: this.mesh });
+    this.lastRenderTimestamp = timestamp;
+    const timeDelta =
+      Math.min(elapsed, MAX_FRAME_DELTA) * ANIMATION_TIME_PER_MS * this.speed;
+    this.setTime(this.time + timeDelta);
+    this.renderFrame();
   }
 
   start() {
     this.shouldRun = true;
     if (!document.hidden && !this.animationId) {
-      this.animationId = requestAnimationFrame(this.update);
+      this.animationId = requestAnimationFrame(this.tick);
     }
   }
 
@@ -165,14 +167,14 @@ export class LuminaGradientRenderer {
 
     cancelAnimationFrame(this.animationId);
     this.animationId = 0;
-    this.lastFrameTime = 0;
+    this.lastRenderTimestamp = null;
   }
 
   handleVisibilityChange() {
     if (document.hidden) {
       this.pause();
     } else if (this.shouldRun && !this.animationId) {
-      this.animationId = requestAnimationFrame(this.update);
+      this.animationId = requestAnimationFrame(this.tick);
     }
   }
 
