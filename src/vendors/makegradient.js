@@ -149,8 +149,7 @@ export class LuminaGradientRenderer {
     if (elapsed < FRAME_INTERVAL_MS) return;
 
     this.lastRenderTimestamp = timestamp;
-    const timeDelta =
-      Math.min(elapsed, MAX_FRAME_DELTA) * ANIMATION_TIME_PER_MS * this.speed;
+    const timeDelta = Math.min(elapsed, MAX_FRAME_DELTA) * ANIMATION_TIME_PER_MS * this.speed;
     this.setTime(this.time + timeDelta);
     this.renderFrame();
   }
@@ -258,8 +257,7 @@ function initializeEmbeddedGradients() {
           colors: JSON.parse(encodedColors),
           mode,
           noiseStrength: noise ? parseFloat(noise) : 0.2,
-          autoStart: !window.matchMedia("(prefers-reduced-motion: reduce)")
-            .matches,
+          autoStart: !window.matchMedia("(prefers-reduced-motion: reduce)").matches,
         },
         "auto",
       );
