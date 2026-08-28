@@ -13,6 +13,7 @@ export class LuminaGradientRenderer {
   lastFrameTime = 0;
   time = 0;
   speed = 1;
+  shouldRun = false;
   resizeObserver = null;
 
   constructor(options) {
@@ -34,7 +35,7 @@ export class LuminaGradientRenderer {
       display: "block",
     });
 
-    const geometry = new Triangle(this.gl);
+    this.geometry = new Triangle(this.gl);
     this.program = new Program(this.gl, {
       vertex: vertexShader,
       fragment: fragmentShader,
@@ -49,13 +50,19 @@ export class LuminaGradientRenderer {
         uMode: { value: 0 },
       },
     });
-    this.mesh = new Mesh(this.gl, { geometry, program: this.program });
+    this.mesh = new Mesh(this.gl, {
+      geometry: this.geometry,
+      program: this.program,
+    });
 
     this.updateUniforms(options.colors, options.mode, options.noiseStrength);
 
     this.resize = this.resize.bind(this);
     this.update = this.update.bind(this);
+    this.handleVisibilityChange = this.handleVisibilityChange.bind(this);
     this.resize();
+
+    document.addEventListener("visibilitychange", this.handleVisibilityChange);
 
     if (this.observeResize) {
       this.resizeObserver = new ResizeObserver(this.resize);
@@ -84,15 +91,12 @@ export class LuminaGradientRenderer {
   }
 
   resize() {
-    if (this.fixedSize) {
-      this.renderer.setSize(this.fixedSize.width, this.fixedSize.height);
-      return;
-    }
+    const width = this.fixedSize?.width ?? this.container.clientWidth;
+    const height = this.fixedSize?.height ?? this.container.clientHeight;
 
-    this.renderer.setSize(
-      this.container.clientWidth,
-      this.container.clientHeight,
-    );
+    // OGL reallocates the canvas backing store on every setSize call.
+    if (this.renderer.width === width && this.renderer.height === height) return;
+    this.renderer.setSize(width, height);
   }
 
   setSpeed(speed) {
@@ -139,17 +143,24 @@ export class LuminaGradientRenderer {
     if (elapsed < FRAME_DURATION) return;
 
     this.lastFrameTime = timestamp;
-    this.time +=
-      Math.min(elapsed, MAX_FRAME_DELTA) * TIME_PER_MILLISECOND * this.speed;
+    this.time += Math.min(elapsed, MAX_FRAME_DELTA) * TIME_PER_MILLISECOND * this.speed;
     this.program.uniforms.uTime.value = this.time;
     this.renderer.render({ scene: this.mesh });
   }
 
   start() {
-    if (!this.animationId) this.update();
+    this.shouldRun = true;
+    if (!document.hidden && !this.animationId) {
+      this.animationId = requestAnimationFrame(this.update);
+    }
   }
 
   stop() {
+    this.shouldRun = false;
+    this.pause();
+  }
+
+  pause() {
     if (!this.animationId) return;
 
     cancelAnimationFrame(this.animationId);
@@ -157,9 +168,21 @@ export class LuminaGradientRenderer {
     this.lastFrameTime = 0;
   }
 
+  handleVisibilityChange() {
+    if (document.hidden) {
+      this.pause();
+    } else if (this.shouldRun && !this.animationId) {
+      this.animationId = requestAnimationFrame(this.update);
+    }
+  }
+
   dispose() {
     this.stop();
     this.resizeObserver?.disconnect();
+    document.removeEventListener("visibilitychange", this.handleVisibilityChange);
+
+    this.geometry.remove();
+    this.program.remove();
 
     if (this.gl.canvas.parentNode === this.container) {
       this.container.removeChild(this.gl.canvas);
