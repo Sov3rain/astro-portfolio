@@ -258,6 +258,8 @@ function initializeEmbeddedGradients() {
           colors: JSON.parse(encodedColors),
           mode,
           noiseStrength: noise ? parseFloat(noise) : 0.2,
+          autoStart: !window.matchMedia("(prefers-reduced-motion: reduce)")
+            .matches,
         },
         "auto",
       );
