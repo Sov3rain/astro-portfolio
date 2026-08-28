@@ -8,7 +8,8 @@ void main() {
 }
 `;
 
-export const fragmentShader = `precision highp float;
+export const fragmentShader = `#extension GL_OES_standard_derivatives : enable
+precision highp float;
 
 varying vec2 vUv;
 
@@ -382,27 +383,12 @@ void main() {
         // Combine: thick impasto strokes dominate, canvas weave is subtle
         float height = n1 * 0.45 + n2 * 0.3 + n3 * 0.15 + canvasWeave * 0.10;
 
-        // 2. Surface normals via finite difference (thicker epsilon for paint ridges)
-        vec2 d = vec2(0.004, 0.0);
-
-        // Height at offset positions
-        vec2 uvDx = uv + d;
-        vec2 uvDy = uv + d.yx;
-        vec2 sDx = vec2(dot(uvDx, strokeDir), dot(uvDx, strokePerp));
-        vec2 sDy = vec2(dot(uvDy, strokeDir), dot(uvDy, strokePerp));
-
-        float hxVal = snoise(vec2(sDx.x * 2.0 + oilTime * 0.04, sDx.y * 4.0)) * 0.45
-                    + snoise(vec2(sDx.x * 5.0 - oilTime * 0.06, sDx.y * 8.0 + oilTime * 0.03)) * 0.3
-                    + snoise(vec2(sDx.x * 12.0 + oilTime * 0.05, sDx.y * 18.0)) * 0.15
-                    + (snoise(uvDx * 40.0) * 0.3 + snoise(uvDx * 60.0 + vec2(0.5)) * 0.15) * 0.10;
-        float hyVal = snoise(vec2(sDy.x * 2.0 + oilTime * 0.04, sDy.y * 4.0)) * 0.45
-                    + snoise(vec2(sDy.x * 5.0 - oilTime * 0.06, sDy.y * 8.0 + oilTime * 0.03)) * 0.3
-                    + snoise(vec2(sDy.x * 12.0 + oilTime * 0.05, sDy.y * 18.0)) * 0.15
-                    + (snoise(uvDy * 40.0) * 0.3 + snoise(uvDy * 60.0 + vec2(0.5)) * 0.15) * 0.10;
-
-        float hx = hxVal - height;
-        float hy = hyVal - height;
-        vec3 normal = normalize(vec3(hx * 7.0, hy * 7.0, 1.0)); // Stronger normals for thick paint
+        // 2. Surface normals from the height derivatives. Scale them to match
+        // the previous 0.004 UV finite-difference step at every resolution.
+        vec2 uvPerPixel = vec2(dFdx(uv.x), dFdy(uv.y));
+        vec2 heightGradient = vec2(dFdx(height), dFdy(height)) / uvPerPixel;
+        vec2 heightDelta = heightGradient * 0.004;
+        vec3 normal = normalize(vec3(heightDelta * 7.0, 1.0));
 
         // 3. Dual-light setup (warm key + cool fill, like a gallery)
         vec3 keyLightDir = normalize(vec3(-0.4, 0.6, 1.0));

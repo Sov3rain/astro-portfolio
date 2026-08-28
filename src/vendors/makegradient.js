@@ -27,6 +27,7 @@ export class LuminaGradientRenderer {
       depth: false,
       dpr: options.dpr ?? DEFAULT_DPR,
       preserveDrawingBuffer: false,
+      webgl: 1,
     });
     this.gl = this.renderer.gl;
     this.container.appendChild(this.gl.canvas);
