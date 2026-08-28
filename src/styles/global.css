@@ -57,6 +57,14 @@ body {
   align-items: center;
   width: 100%;
   padding: 0px var(--body-margins-left-right);
+  padding-left: max(
+    var(--body-margins-left-right),
+    env(safe-area-inset-left, 0px)
+  );
+  padding-right: max(
+    var(--body-margins-left-right),
+    env(safe-area-inset-right, 0px)
+  );
 
   line-height: 1.6;
 
@@ -75,6 +83,10 @@ body {
 
   padding-top: var(--page-top);
   padding-bottom: var(--page-bottom);
+  padding-top: calc(var(--page-top) + env(safe-area-inset-top, 0px));
+  padding-bottom: calc(
+    var(--page-bottom) + env(safe-area-inset-bottom, 0px)
+  );
 }
 
 .left-column {
