@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://samuelduval.me/sitemap-index.xml
+Sitemap: https://www.samuelduval.me/sitemap-index.xml

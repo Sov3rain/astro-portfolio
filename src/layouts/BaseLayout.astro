@@ -21,7 +21,7 @@ const {
 const isDev = import.meta.env.DEV;
 
 // Simple defaults
-const siteUrl = 'https://samuelduval.me';
+const siteUrl = Astro.site!;
 const defaultDescription =
   "Samuel Duval, développeur 3D à Nantes. Tech Lead chez Wonder Partner's, spécialisé en développement Unity, réalité augmentée et solutions innovantes.";
 const finalDescription = metaDescription || defaultDescription;
@@ -68,13 +68,13 @@ const canonicalUrl = new URL(Astro.url.pathname, siteUrl).href;
     <meta property="og:description" content={finalDescription} />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:site_name" content="Samuel Duval" />
-    <meta property="og:image" content="https://samuelduval.me/og-image.webp" />
+    <meta property="og:image" content={new URL('/og-image.webp', siteUrl).href} />
 
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={pageTitle} />
     <meta name="twitter:description" content={finalDescription} />
-    <meta name="twitter:image" content="https://samuelduval.me/og-image.webp" />
+    <meta name="twitter:image" content={new URL('/og-image.webp', siteUrl).href} />
 
     <!-- Font preloading -->
     <link

@@ -2,7 +2,7 @@
 
 Personal portfolio built with Astro.
 
-[samuelduval.me](https://samuelduval.me)
+[samuelduval.me](https://www.samuelduval.me)
 
 ## Setup
 
