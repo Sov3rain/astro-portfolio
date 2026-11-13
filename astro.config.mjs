@@ -14,6 +14,6 @@ export default defineConfig({
       },
     },
   },
-  site: "https://samuelduval.me",
+  site: "https://www.samuelduval.me",
   integrations: [sitemap()],
 });
